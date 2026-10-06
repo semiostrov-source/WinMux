@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 cd "$(dirname "$0")/.."
-trap 'echo "Packaging failed at line $LINENO"; find .release/WinMux-ru.xcarchive/Products -maxdepth 6 -type d 2>/dev/null | head -50; grep -E "(\.app|\.bundle|Localizable|ARCHIVE SUCCEEDED)" .release/build-ru.log | tail -25' ERR
+trap 'echo "Packaging failed at line $LINENO"' ERR
 
 python3 script/validate_localization.py
 make xcodeproj VERSION=0.5.6 CODESIGN_IDENTITY=- DEVELOPMENT_TEAM=
@@ -16,7 +16,11 @@ xcodebuild -project WinMux.xcodeproj -scheme WinMux -configuration Release \
 
 app=.release/WinMux-ru.xcarchive/Products/Applications/WinMux.app
 test -d "$app"
-find "$app/Contents" -path '*AppBundle.bundle/ru.lproj/Localizable.strings' | grep -q .
+localizations="$app/Contents/Resources/WinMuxPackage_AppBundle.bundle/Contents/Resources"
+for language in en ru; do
+    test -f "$localizations/$language.lproj/Localizable.strings"
+    plutil -lint "$localizations/$language.lproj/Localizable.strings"
+done
 # Xcode packages dependency bundles into the app; sign nested executable code first.
 while IFS= read -r -d '' nested; do
     codesign --force --sign - "$nested"
