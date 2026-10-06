@@ -1,6 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 cd "$(dirname "$0")/.."
+trap 'echo "Packaging failed at line $LINENO"; find .release/WinMux-ru.xcarchive/Products -maxdepth 6 -type d 2>/dev/null | head -50; grep -E "(\.app|\.bundle|Localizable|ARCHIVE SUCCEEDED)" .release/build-ru.log | tail -25' ERR
 
 python3 script/validate_localization.py
 make xcodeproj VERSION=0.5.6 CODESIGN_IDENTITY=- DEVELOPMENT_TEAM=
