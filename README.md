@@ -5,6 +5,23 @@
 
 # WinMux
 
+## Russian version / Русская версия
+
+This fork adds English and Russian UI resources to WinMux 0.5.6. Commands,
+configuration keys, custom project names, and other apps' window titles retain
+their original values. Official automatic updates are disabled in this build.
+
+Русская версия использует стандартный выбор языка приложения в macOS.
+Сборка для Apple Silicon доступна в GitHub Actions: **Russian build** →
+**Run workflow**. Артефакт содержит `WinMux-0.5.6-ru.1.zip` и SHA-256.
+Сборка подписана ad hoc, без сертификата разработчика и нотарификации Apple.
+При первом запуске macOS может запросить подтверждение и повторное разрешение
+«Универсальный доступ». Сохраните оригинальное приложение и настройки до замены;
+запускайте только одну копию WinMux одновременно.
+
+Validation: `python3 script/validate_localization.py`, `make check`.
+Packaging with Xcode: `bash script/build_russian.sh`.
+
 <p align="left">A powerful sidebar-first window manager for macOS.</p>
 
 https://github.com/user-attachments/assets/51983568-a168-494f-8ae3-5f50ca1efce1

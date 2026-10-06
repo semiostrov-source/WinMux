@@ -184,7 +184,7 @@ func makeSwitcherPaletteItem(
     workspaceName: String,
     focusedWindowId: UInt32?,
 ) async -> SwitcherPaletteItem {
-    let appName = window.app.name ?? window.app.rawAppBundleId ?? "Unknown"
+    let appName = window.app.name ?? window.app.rawAppBundleId ?? L("Unknown")
     // A cold cache previously indexed every Finder window as only "Finder" until some other
     // UI happened to fetch its title. Fetch first-sight titles before showing the palette so
     // folder names are searchable immediately; known stale titles still return instantly and
@@ -252,7 +252,7 @@ struct SwitcherPaletteView: View {
                 Image(systemName: "magnifyingglass")
                     .font(.system(size: 14, weight: .medium))
                     .foregroundStyle(Color.white.opacity(GlassToken.textTertiary))
-                TextField("Search windows…", text: $model.query)
+                TextField(L("Search windows…"), text: $model.query)
                     .textFieldStyle(.plain)
                     .font(.system(size: 16, weight: .medium))
                     .foregroundStyle(Color.white.opacity(GlassToken.textPrimary))

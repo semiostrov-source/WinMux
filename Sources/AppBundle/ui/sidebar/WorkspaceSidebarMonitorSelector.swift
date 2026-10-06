@@ -24,7 +24,7 @@ struct WorkspaceSidebarMonitorSelector: View {
 
     @State private var isProjectMenuOpen = false
     private var projectPopupWidth: CGFloat {
-        let names = browsableProjects.map(\.displayName) + ["Other Projects"]
+        let names = browsableProjects.map(\.displayName) + [L("Other Projects")]
         let maxTextWidth = names.map {
             ($0 as NSString).size(withAttributes: [.font: NSFont.systemFont(ofSize: 12, weight: .medium)]).width
         }.max() ?? 0
@@ -39,7 +39,7 @@ struct WorkspaceSidebarMonitorSelector: View {
             scopes.first { $0.id == workspaceSidebarDefaultScopeId }
                 ?? WorkspaceSidebarMonitorScopeViewModel(
                     id: workspaceSidebarDefaultScopeId,
-                    displayName: "Default",
+                    displayName: L("Default"),
                     subtitle: nil,
                     systemImageName: "display",
                     isFocusedMonitor: false
@@ -97,7 +97,7 @@ struct WorkspaceSidebarMonitorSelector: View {
             isProjectMenuOpen = false
             onSelectScope(scope.id)
         } label: {
-            Text(scope.id == workspaceSidebarFocusedScopeId ? "Focus" : scope.displayName)
+            Text(scope.id == workspaceSidebarFocusedScopeId ? L("Focus") : scope.displayName)
                 .font(.system(size: 12.5, weight: isActive ? .semibold : .medium))
                 .lineLimit(1)
                 .foregroundStyle(isActive ? Color.white : Color.white.opacity(0.68))
@@ -139,7 +139,7 @@ struct WorkspaceSidebarMonitorSelector: View {
             isProjectMenuOpen.toggle()
         } label: {
             HStack(spacing: 4) {
-                Text(selectedProject?.displayName ?? "Other Projects")
+                Text(selectedProject?.displayName ?? L("Other Projects"))
                     .font(.system(size: 12.5, weight: .medium))
                     .foregroundStyle(Color.white.opacity(isActive ? 0.86 : 0.72))
                     .lineLimit(1)
@@ -158,7 +158,7 @@ struct WorkspaceSidebarMonitorSelector: View {
                 .offset(y: workspaceSidebarDropdownHeight + workspaceSidebarSectionGap)
         }
         .zIndex(isProjectMenuOpen ? 200 : 0)
-        .help("Browse another project")
+        .help(L("Browse another project"))
         )
     }
 

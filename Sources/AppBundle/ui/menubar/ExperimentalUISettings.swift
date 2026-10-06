@@ -42,8 +42,8 @@ enum MenuBarIconAppearance: String, CaseIterable, Identifiable, Equatable, Hasha
 
     var title: String {
         switch self {
-            case .color: "Color"
-            case .monochrome: "Monochrome"
+            case .color: L("Color")
+            case .monochrome: L("Monochrome")
         }
     }
 }
@@ -57,11 +57,11 @@ enum MenuBarStyle: String, CaseIterable, Identifiable, Equatable, Hashable {
     var id: String { rawValue }
     var title: String {
         switch self {
-            case .monospacedText: "Monospaced font"
-            case .systemText: "System font"
-            case .squares: "Square images"
-            case .i3: "i3 style grouped"
-            case .i3Ordered: "i3 style ordered"
+            case .monospacedText: L("Monospaced font")
+            case .systemText: L("System font")
+            case .squares: L("Square images")
+            case .i3: L("i3 style grouped")
+            case .i3Ordered: L("i3 style ordered")
         }
     }
 }

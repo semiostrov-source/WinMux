@@ -13,12 +13,12 @@ struct ShortcutGeneralView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
-                GeneralSection(title: "Management") {
+                GeneralSection(title: L("Management")) {
                     VStack(alignment: .leading, spacing: 12) {
                         HStack {
                             VStack(alignment: .leading, spacing: 2) {
-                                Text("Deleting projects")
-                                Text("Close windows keeps app confirmation dialogs visible and aborts deletion if a window stays open.")
+                                Text(L("Deleting projects"))
+                                Text(L("Close windows keeps app confirmation dialogs visible and aborts deletion if a window stays open."))
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
                                     .fixedSize(horizontal: false, vertical: true)
@@ -39,10 +39,10 @@ struct ShortcutGeneralView: View {
                     }
                 }
 
-                GeneralSection(title: "Appearance") {
+                GeneralSection(title: L("Appearance")) {
                     VStack(alignment: .leading, spacing: 14) {
                         HStack {
-                            Text("Menu bar style")
+                            Text(L("Menu bar style"))
                             Spacer()
                             Picker("", selection: $displayStyle) {
                                 ForEach(MenuBarStyle.allCases) { style in
@@ -61,7 +61,7 @@ struct ShortcutGeneralView: View {
                         }
 
                         HStack {
-                            Text("Menu bar icon")
+                            Text(L("Menu bar icon"))
                             Spacer()
                             Picker("", selection: $iconAppearance) {
                                 ForEach(MenuBarIconAppearance.allCases) { appearance in
@@ -80,8 +80,8 @@ struct ShortcutGeneralView: View {
 
                         HStack {
                             VStack(alignment: .leading, spacing: 2) {
-                                Text("Sidebar menu bar space")
-                                Text("Use 0 px when the macOS menu bar auto-hides.")
+                                Text(L("Sidebar menu bar space"))
+                                Text(L("Use 0 px when the macOS menu bar auto-hides."))
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
                             }
@@ -104,14 +104,14 @@ struct ShortcutGeneralView: View {
                     }
                 }
 
-                GeneralSection(title: "Configuration") {
+                GeneralSection(title: L("Configuration")) {
                     VStack(alignment: .leading, spacing: 12) {
                         HStack {
-                            Button("Open Config File") { openConfigAction() }
-                            Button("Reload Config") { reloadConfigAction() }
+                            Button(L("Open Config File")) { openConfigAction() }
+                            Button(L("Reload Config")) { reloadConfigAction() }
                         }
                         
-                        Text("Shortcuts are edited here. Advanced configuration remains in `winmux.toml`.")
+                        Text(L("Shortcuts are edited here. Advanced configuration remains in `winmux.toml`."))
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }
@@ -177,9 +177,9 @@ private extension WorkspaceProjectDeletionAction {
     var settingsTitle: String {
         switch self {
             case .closeWindows:
-                "Close project windows"
+                L("Close project windows")
             case .moveWindowsToFallback:
-                "Move windows elsewhere"
+                L("Move windows elsewhere")
         }
     }
 }

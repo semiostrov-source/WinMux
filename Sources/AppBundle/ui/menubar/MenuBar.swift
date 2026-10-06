@@ -14,10 +14,10 @@ private let winmuxNewIssueURL = "https://github.com/zimengxiong/winmux/issues/ne
             let shortIdentification = "\(winMuxAppName) v\(winMuxAppVersion) \(gitShortHash)"
             let identification      = "\(winMuxAppName) v\(winMuxAppVersion) \(gitHash)"
         Text(shortIdentification)
-        Button("Copy to clipboard") { identification.copyToClipboard() }
+        Button(L("Copy to clipboard")) { identification.copyToClipboard() }
             .keyboardShortcut("C", modifiers: .command)
         Divider()
-        Button(viewModel.isEnabled ? "Disable" : "Enable") {
+        Button(viewModel.isEnabled ? L("Disable") : L("Enable")) {
             Task {
                 try await runLightSession(.menuBarButton, .forceRun) { () throws in
                     _ = try await EnableCommand(args: EnableCmdArgs(rawArgs: [], targetState: .toggle))
@@ -27,17 +27,17 @@ private let winmuxNewIssueURL = "https://github.com/zimengxiong/winmux/issues/ne
         }.keyboardShortcut("E", modifiers: .command)
         OpenShortcutSettingsButton()
         if let checkForUpdates {
-            Button("Check for Updates…") {
+            Button(L("Check for Updates…")) {
                 checkForUpdates()
             }
         }
-        Button("GitHub Repository") {
+        Button(L("GitHub Repository")) {
             openURLString(winmuxRepositoryURL)
         }
-        Button("File an issue...") {
+        Button(L("File an issue...")) {
             openURLString(winmuxNewIssueURL)
         }
-        Button("Quit \(winMuxAppName)") {
+        Button(LF("Quit %@", winMuxAppName)) {
             Task {
                 defer { terminateApp() }
                 try await terminationHandler.beforeTermination()
@@ -56,7 +56,7 @@ private let winmuxNewIssueURL = "https://github.com/zimengxiong/winmux/issues/ne
 
 @MainActor @ViewBuilder
 func openConfigButton(showShortcutGroup: Bool = false) -> some View {
-    let button = Button("Open config") {
+    let button = Button(L("Open config")) {
         switch findCustomConfigUrl() {
             case .file(let url):
                 NSWorkspace.shared.open(url)
@@ -77,7 +77,7 @@ func openConfigButton(showShortcutGroup: Bool = false) -> some View {
 @MainActor @ViewBuilder
 func reloadConfigButton(showShortcutGroup: Bool = false) -> some View {
     if let token: RunSessionGuard = .isServerEnabled {
-        let button = Button("Reload config") {
+        let button = Button(L("Reload config")) {
             Task {
                 try await runLightSession(.menuBarButton, token) { _ = try await reloadConfig() }
             }

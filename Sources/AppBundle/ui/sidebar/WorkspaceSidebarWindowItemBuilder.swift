@@ -1,6 +1,6 @@
 @MainActor
 func sidebarDisplayLabel(for window: Window) -> String {
-    let appName = window.app.name ?? window.app.rawAppBundleId ?? "Unknown App"
+    let appName = window.app.name ?? window.app.rawAppBundleId ?? L("Unknown App")
     return cachedWindowTitle(for: window)?.takeIf { $0 != appName } ?? appName
 }
 
@@ -10,7 +10,7 @@ func makeWorkspaceSidebarWindowViewModel(
     workspaceName: String,
     currentFocus: LiveFocus,
 ) async -> WorkspaceSidebarWindowViewModel {
-    let appName = window.app.name ?? window.app.rawAppBundleId ?? "Unknown App"
+    let appName = window.app.name ?? window.app.rawAppBundleId ?? L("Unknown App")
     let title = await getSidebarWindowTitle(window, appName: appName)
     return WorkspaceSidebarWindowViewModel(
         windowId: window.windowId,

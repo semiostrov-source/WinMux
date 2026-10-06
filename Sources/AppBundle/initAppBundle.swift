@@ -17,7 +17,7 @@ import Foundation
             bootstrappedConfigUrl = try ensureBootstrapConfigExistsIfNeeded()
         } catch {
             MessageModel.shared.message = Message(
-                description: "Config Bootstrap Error",
+                description: L("Config Bootstrap Error"),
                 body: error.localizedDescription,
             )
         }

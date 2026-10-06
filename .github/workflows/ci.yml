@@ -1,6 +1,7 @@
 name: CI
 
 on:
+  workflow_dispatch:
   pull_request:
   push:
     branches: [main]
@@ -14,6 +15,7 @@ concurrency:
 
 jobs:
   test:
+    if: github.event_name != 'push' || github.repository == 'ZimengXiong/WinMux'
     name: Build and test
     runs-on: macos-26
     timeout-minutes: 30
@@ -34,4 +36,6 @@ jobs:
           xcodebuild -version
 
       - name: Build and test
-        run: make check
+        run: |
+          python3 script/validate_localization.py
+          make check

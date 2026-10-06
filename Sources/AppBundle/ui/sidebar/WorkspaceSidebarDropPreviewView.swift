@@ -25,7 +25,7 @@ struct WorkspaceSidebarDropPreviewView: View {
     private var newWorkspacePreview: some View {
         VStack(alignment: .leading, spacing: 1) {
             HStack(spacing: workspaceSidebarHeaderSpacing) {
-                Text("New Workspace")
+                Text(L("New Workspace"))
                     .font(.system(size: 15, weight: .semibold))
                     .foregroundStyle(Color.white.opacity(0.85))
                     .lineLimit(1)

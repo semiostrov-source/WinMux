@@ -14,11 +14,11 @@ struct ManagedDirectionalShortcutsView: View {
         Group {
             if availableWidth >= Self.horizontalLayoutMinWidth {
                 HStack(alignment: .top, spacing: 24) {
-                    directionalPad(title: "Focus", prefix: "focus") {
+                    directionalPad(title: L("Focus"), prefix: "focus") {
                         FocusDemoView()
                     }
 
-                    directionalPad(title: "Move", prefix: "move") {
+                    directionalPad(title: L("Move"), prefix: "move") {
                         MoveDemoView()
                     }
 
@@ -26,11 +26,11 @@ struct ManagedDirectionalShortcutsView: View {
                 }
             } else {
                 VStack(alignment: .leading, spacing: 24) {
-                    directionalPad(title: "Focus", prefix: "focus") {
+                    directionalPad(title: L("Focus"), prefix: "focus") {
                         FocusDemoView()
                     }
 
-                    directionalPad(title: "Move", prefix: "move") {
+                    directionalPad(title: L("Move"), prefix: "move") {
                         MoveDemoView()
                     }
                 }
@@ -210,18 +210,18 @@ struct CompassPad<Demo: View>: View {
         Grid(horizontalSpacing: 12, verticalSpacing: 12) {
             GridRow {
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
-                recorderCell(for: "\(prefix)-up", label: "Up")
+                recorderCell(for: "\(prefix)-up", label: L("Up"))
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
             }
             GridRow {
-                recorderCell(for: "\(prefix)-left", label: "Left")
+                recorderCell(for: "\(prefix)-left", label: L("Left"))
                 demo
                     .frame(width: 120, height: 80)
-                recorderCell(for: "\(prefix)-right", label: "Right")
+                recorderCell(for: "\(prefix)-right", label: L("Right"))
             }
             GridRow {
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
-                recorderCell(for: "\(prefix)-down", label: "Down")
+                recorderCell(for: "\(prefix)-down", label: L("Down"))
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
             }
         }

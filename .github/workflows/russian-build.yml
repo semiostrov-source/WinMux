@@ -1,0 +1,32 @@
+name: Russian build
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: macos-26
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Install the pinned Swift toolchain
+        run: |
+          brew install swiftly
+          swiftly init --skip-install --assume-yes --verbose
+          swiftly install
+      - name: Build and validate Russian app
+        run: bash script/build_russian.sh
+      - name: Upload the verified app
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: WinMux-0.5.6-ru.1
+          path: |
+            .release/WinMux-0.5.6-ru.1.zip
+            .release/WinMux-0.5.6-ru.1.sha256
+          if-no-files-found: error
+          retention-days: 30

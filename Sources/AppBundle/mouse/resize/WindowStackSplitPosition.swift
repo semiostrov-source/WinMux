@@ -22,19 +22,19 @@ enum WindowStackSplitPosition: Equatable {
 
     var title: String {
         switch self {
-            case .left: "Stack Left"
-            case .right: "Stack Right"
-            case .above: "Stack Above"
-            case .below: "Stack Below"
+            case .left: L("Stack Left")
+            case .right: L("Stack Right")
+            case .above: L("Stack Above")
+            case .below: L("Stack Below")
         }
     }
 
     var subtitle: String {
         switch self {
-            case .left: "Drop to split this tile and place the dragged item on the left"
-            case .right: "Drop to split this tile and place the dragged item on the right"
-            case .above: "Drop to split this tile and place the dragged item above"
-            case .below: "Drop to split this tile and place the dragged item below"
+            case .left: L("Drop to split this tile and place the dragged item on the left")
+            case .right: L("Drop to split this tile and place the dragged item on the right")
+            case .above: L("Drop to split this tile and place the dragged item above")
+            case .below: L("Drop to split this tile and place the dragged item below")
         }
     }
 

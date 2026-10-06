@@ -488,7 +488,7 @@ extension WindowTabStripView {
             updateHoveredTab(tab.windowId, hovering: hovering)
         }
         .contextMenu {
-            Button("Remove Tab From Stack") {
+            Button(L("Remove Tab From Stack")) {
                 removeWindowFromTabStrip(tab.windowId, fallbackWorkspace: tab.workspaceName)
             }
         }

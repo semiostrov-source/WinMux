@@ -88,7 +88,7 @@ func runWorkspaceSidebarSession(_ body: @escaping @MainActor () async throws -> 
 @MainActor
 func showWorkspaceSidebarError(_ body: String) {
     MessageModel.shared.message = Message(
-        description: "Workspace Sidebar Error",
+        description: L("Workspace Sidebar Error"),
         body: body,
     )
 }
@@ -374,7 +374,7 @@ private func workspaceSidebarDropPreview(
     let moveNode = dragSubjectNode(for: sourceWindow, subject: subject)
     let isTabGroup = moveNode is TilingContainer
     let sourceLabel = sidebarDragSourceTitle(for: sourceWindow, subject: subject)
-    let appName = sourceWindow.app.name ?? sourceWindow.app.rawAppBundleId ?? "Window"
+    let appName = sourceWindow.app.name ?? sourceWindow.app.rawAppBundleId ?? L("Window")
     return WorkspaceSidebarDropPreviewViewModel(
         sourceWindowId: sourceWindow.windowId,
         label: sourceLabel,
@@ -398,7 +398,7 @@ private func workspaceSidebarDropPreviewTabs(
 ) -> [WorkspaceSidebarDropPreviewTabItem] {
     guard isTabGroup else { return [] }
     return moveNode.allLeafWindowsRecursive.map { window in
-        let appName = window.app.name ?? window.app.rawAppBundleId ?? "Window"
+        let appName = window.app.name ?? window.app.rawAppBundleId ?? L("Window")
         return WorkspaceSidebarDropPreviewTabItem(
             title: cachedWindowTitle(for: window)?.takeIf { $0 != appName } ?? appName,
             appName: appName,
@@ -509,19 +509,15 @@ private func confirmWorkspaceSidebarProjectDeletion(_ project: WorkspaceSidebarP
     let alert = NSAlert()
     switch config.workspaceSidebar.projectDeletionAction {
         case .closeWindows:
-            alert.messageText = "Close Project Windows?"
-            alert.informativeText = """
-            WinMux will ask macOS to close \(windowCount) window\(windowCount == 1 ? "" : "s") in “\(project.displayName)”. Apps may show their own confirmation dialogs for unsaved work. If any window stays open, WinMux will keep the project.
-            """
-            alert.addButton(withTitle: "Close Project")
+            alert.messageText = L("Close Project Windows?")
+            alert.informativeText = LF("WinMux will ask macOS to close windows in “%@” (count: %d). Apps may show confirmation dialogs for unsaved work. If any window stays open, WinMux will keep the project.", project.displayName, windowCount)
+            alert.addButton(withTitle: L("Close Project"))
         case .moveWindowsToFallback:
-            alert.messageText = "Delete Project?"
-            alert.informativeText = """
-            WinMux will delete “\(project.displayName)” and move \(windowCount) window\(windowCount == 1 ? "" : "s") to another project.
-            """
-            alert.addButton(withTitle: "Delete Project")
+            alert.messageText = L("Delete Project?")
+            alert.informativeText = LF("WinMux will delete “%@” and move its windows (count: %d) to another project.", project.displayName, windowCount)
+            alert.addButton(withTitle: L("Delete Project"))
     }
-    alert.addButton(withTitle: "Cancel")
+    alert.addButton(withTitle: L("Cancel"))
     alert.alertStyle = .warning
     return alert.runModal() == .alertFirstButtonReturn
 }

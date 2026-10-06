@@ -159,7 +159,7 @@ extension WorkspaceSidebarProjectPager {
             isProjectMenuOpen.toggle()
         } label: {
             HStack(spacing: 4) {
-                Text(selectedProject?.displayName ?? "Project")
+                Text(selectedProject?.displayName ?? L("Project"))
                     .font(.system(size: 12.5, weight: .medium))
                     .foregroundStyle(Color.white.opacity(isHovered || isProjectMenuOpen ? 0.86 : 0.72))
                     .lineLimit(1)
@@ -187,7 +187,7 @@ extension WorkspaceSidebarProjectPager {
                 .modifier(WorkspaceSidebarDropdownControlStyle(isActive: false))
         }
         .buttonStyle(.plain)
-        .help("New Project")
+        .help(L("New Project"))
         .frame(height: workspaceSidebarPagerHeight, alignment: .center)
     }
 
@@ -236,16 +236,16 @@ extension WorkspaceSidebarProjectPager {
 
     @ViewBuilder
     func projectContextMenuItems(for project: WorkspaceSidebarProjectViewModel) -> some View {
-        Button("Rename Project") {
+        Button(L("Rename Project")) {
             onBeginRenameProject(project)
         }
-        Menu("Color") {
+        Menu(L("Color")) {
             let selectedColorHex = project.colorHex.flatMap(normalizedWorkspaceSidebarColorHex)
             Button {
                 onSetProjectColor(project, nil)
             } label: {
                 Label {
-                    Text("Auto")
+                    Text(L("Auto"))
                 } icon: {
                     Image(nsImage: workspaceSidebarAutomaticColorSwatchImage(isSelected: selectedColorHex == nil))
                 }
@@ -269,7 +269,7 @@ extension WorkspaceSidebarProjectPager {
         Button(role: .destructive) {
             onDeleteProject(project)
         } label: {
-            Text("Delete Project")
+            Text(L("Delete Project"))
         }
         .disabled(!canDeleteWorkspaceProject(project.id))
     }
