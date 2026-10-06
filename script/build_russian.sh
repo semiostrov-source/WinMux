@@ -15,8 +15,7 @@ xcodebuild -project WinMux.xcodeproj -scheme WinMux -configuration Release \
 
 app=.release/WinMux-ru.xcarchive/Products/Applications/WinMux.app
 test -d "$app"
-test -f "$app/Contents/Resources/WinMuxPackage_AppBundle.bundle/ru.lproj/Localizable.strings" || \
-    find "$app/Contents" -path '*/ru.lproj/Localizable.strings' | grep -q .
+find "$app/Contents" -path '*AppBundle.bundle/ru.lproj/Localizable.strings' | grep -q .
 # Xcode packages dependency bundles into the app; sign nested executable code first.
 while IFS= read -r -d '' nested; do
     codesign --force --sign - "$nested"

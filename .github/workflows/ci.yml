@@ -1,6 +1,7 @@
 name: CI
 
 on:
+  workflow_dispatch:
   pull_request:
   push:
     branches: [main]
@@ -14,7 +15,7 @@ concurrency:
 
 jobs:
   test:
-    if: github.event_name == 'pull_request' || github.repository == 'ZimengXiong/WinMux'
+    if: github.event_name != 'push' || github.repository == 'ZimengXiong/WinMux'
     name: Build and test
     runs-on: macos-26
     timeout-minutes: 30
