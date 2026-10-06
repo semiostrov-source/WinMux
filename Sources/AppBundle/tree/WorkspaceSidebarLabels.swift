@@ -52,12 +52,12 @@ func workspaceDefaultDisplayName(_ workspaceName: String) -> String {
         if let index = automaticWorkspaceDisplayIndex(workspace, focusedWorkspace: focus.workspace)
             ?? automaticWorkspaceDisplayIndexFallback(workspaceName)
         {
-            return "Workspace \(index)"
+            return LF("Workspace %d", index)
         }
         return workspaceName
     }
     if let index = sidebarDraftWorkspaceIndex(workspaceName) {
-        return "Workspace \(index)"
+        return LF("Workspace %d", index)
     }
     return workspaceName
 }

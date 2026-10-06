@@ -10,54 +10,54 @@ func buildShortcutSections() -> [ShortcutSettingsModel.Section] {
         .init(
             id: "managed-focus",
             category: .managed,
-            title: "Focus",
-            summary: "Directional focus movement while WinMux is managing windows.",
+            title: L("Focus"),
+            summary: L("Directional focus movement while WinMux is managing windows."),
             actions: [
-                shortcutAction(id: "focus-left", title: "Focus Left", command: "focus left"),
-                shortcutAction(id: "focus-down", title: "Focus Down", command: "focus down"),
-                shortcutAction(id: "focus-up", title: "Focus Up", command: "focus up"),
-                shortcutAction(id: "focus-right", title: "Focus Right", command: "focus right"),
+                shortcutAction(id: "focus-left", title: L("Focus Left"), command: "focus left"),
+                shortcutAction(id: "focus-down", title: L("Focus Down"), command: "focus down"),
+                shortcutAction(id: "focus-up", title: L("Focus Up"), command: "focus up"),
+                shortcutAction(id: "focus-right", title: L("Focus Right"), command: "focus right"),
             ],
         ),
         .init(
             id: "managed-move",
             category: .managed,
-            title: "Move",
-            summary: "Reposition the focused tiled window inside the tree.",
+            title: L("Move"),
+            summary: L("Reposition the focused tiled window inside the tree."),
             actions: [
-                shortcutAction(id: "move-left", title: "Move Left", command: "move left"),
-                shortcutAction(id: "move-down", title: "Move Down", command: "move down"),
-                shortcutAction(id: "move-up", title: "Move Up", command: "move up"),
-                shortcutAction(id: "move-right", title: "Move Right", command: "move right"),
+                shortcutAction(id: "move-left", title: L("Move Left"), command: "move left"),
+                shortcutAction(id: "move-down", title: L("Move Down"), command: "move down"),
+                shortcutAction(id: "move-up", title: L("Move Up"), command: "move up"),
+                shortcutAction(id: "move-right", title: L("Move Right"), command: "move right"),
             ],
         ),
         .init(
             id: "managed-splits",
             category: .managed,
-            title: "Splits",
-            summary: "Create a shared split container with the nearest window in the chosen direction.",
+            title: L("Splits"),
+            summary: L("Create a shared split container with the nearest window in the chosen direction."),
             actions: [
-                shortcutAction(id: "split-left", title: "Split Left", command: "join-with left"),
-                shortcutAction(id: "split-down", title: "Split Down", command: "join-with down"),
-                shortcutAction(id: "split-up", title: "Split Up", command: "join-with up"),
-                shortcutAction(id: "split-right", title: "Split Right", command: "join-with right"),
+                shortcutAction(id: "split-left", title: L("Split Left"), command: "join-with left"),
+                shortcutAction(id: "split-down", title: L("Split Down"), command: "join-with down"),
+                shortcutAction(id: "split-up", title: L("Split Up"), command: "join-with up"),
+                shortcutAction(id: "split-right", title: L("Split Right"), command: "join-with right"),
             ],
         ),
         .init(
             id: "managed-layout",
             category: .managed,
-            title: "Layout",
-            summary: "Common layout toggles for managed windows.",
+            title: L("Layout"),
+            summary: L("Common layout toggles for managed windows."),
             actions: [
                 shortcutAction(
                     id: "toggle-floating",
-                    title: "Toggle Floating",
-                    subtitle: "Switch the focused managed window between floating and tiling.",
+                    title: L("Toggle Floating"),
+                    subtitle: L("Switch the focused managed window between floating and tiling."),
                     command: "layout floating tiling"
                 ),
                 shortcutAction(
                     id: "fullscreen",
-                    title: "Toggle Fullscreen",
+                    title: L("Toggle Fullscreen"),
                     command: "fullscreen"
                 ),
             ],
@@ -65,8 +65,8 @@ func buildShortcutSections() -> [ShortcutSettingsModel.Section] {
         .init(
             id: "workspaces",
             category: .common,
-            title: "Workspaces",
-            summary: "Use one modifier pattern for workspace numbers, then override specific workspaces only when needed.",
+            title: L("Workspaces"),
+            summary: L("Use one modifier pattern for workspace numbers, then override specific workspaces only when needed."),
             actions: [],
         ),
     ]
@@ -276,7 +276,7 @@ func displayBindingNotation(_ notation: String) -> String {
             case "down": "↓"
             case "enter": "↩"
             case "esc": "⎋"
-            case "space": "Space"
+            case "space": L("Space")
             case "tab": "⇥"
             case "backspace": "⌫"
             case "semicolon": ";"

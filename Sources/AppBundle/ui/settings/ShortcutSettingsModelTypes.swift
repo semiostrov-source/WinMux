@@ -38,15 +38,15 @@ extension ShortcutSettingsModel {
 
         var title: String {
             switch self {
-                case .switchTo: "Switch"
-                case .moveTo: "Move"
+                case .switchTo: L("Switch")
+                case .moveTo: L("Move")
             }
         }
 
         var subtitle: String {
             switch self {
-                case .switchTo: "Change focus to workspace N"
-                case .moveTo: "Send the focused window to workspace N"
+                case .switchTo: L("Change focus to workspace N")
+                case .moveTo: L("Send the focused window to workspace N")
             }
         }
     }
@@ -67,8 +67,8 @@ extension ShortcutSettingsModel {
 
         var title: String {
             switch self {
-                case .shortcuts: "Shortcuts"
-                case .advanced: "Advanced"
+                case .shortcuts: L("Shortcuts")
+                case .advanced: L("Advanced")
             }
         }
     }

@@ -81,7 +81,7 @@ func sidebarDragSourceTitle(for sourceWindow: Window, subject: WindowDragSubject
             group.mostRecentWindowRecursive ??
             group.anyLeafWindowRecursive ??
             sourceWindow
-        return "\(sidebarDisplayLabel(for: representativeWindow)) • \(windowCount) windows"
+        return LF("%@ • %d windows", sidebarDisplayLabel(for: representativeWindow), windowCount)
     }
     return sidebarDisplayLabel(for: sourceWindow)
 }

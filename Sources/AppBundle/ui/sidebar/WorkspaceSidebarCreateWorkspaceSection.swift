@@ -91,7 +91,7 @@ struct WorkspaceSidebarCreateWorkspaceSection: View {
                         Image(systemName: "plus")
                             .font(.system(size: 11, weight: .semibold))
                             .foregroundStyle(Color.white.opacity(0.45))
-                        Text("New Workspace")
+                        Text(L("New Workspace"))
                             .font(.system(size: 13, weight: .medium))
                             .foregroundStyle(Color.white.opacity(0.48))
                             .lineLimit(1)

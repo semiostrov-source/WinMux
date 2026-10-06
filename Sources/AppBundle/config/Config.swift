@@ -138,31 +138,31 @@ enum ChromeSolidColor: String, CaseIterable, Identifiable, Sendable {
 
     var title: String {
         switch self {
-        case .black: "Black"
-        case .onyx: "Onyx"
-        case .charcoal: "Charcoal"
-        case .midnight: "Midnight"
-        case .graphite: "Graphite"
-        case .slate: "Slate"
-        case .steel: "Steel"
-        case .silver: "Silver"
-        case .fog: "Fog"
-        case .blue: "Blue"
-        case .indigo: "Indigo"
-        case .lavender: "Lavender"
-        case .ocean: "Ocean"
-        case .teal: "Teal"
-        case .mint: "Mint"
-        case .green: "Green"
-        case .sage: "Sage"
-        case .gold: "Gold"
-        case .cocoa: "Cocoa"
-        case .rose: "Rose"
-        case .mauve: "Mauve"
-        case .plum: "Plum"
-        case .violet: "Violet"
-        case .apricot: "Apricot"
-        case .custom: "Custom"
+        case .black: L("Black")
+        case .onyx: L("Onyx")
+        case .charcoal: L("Charcoal")
+        case .midnight: L("Midnight")
+        case .graphite: L("Graphite")
+        case .slate: L("Slate")
+        case .steel: L("Steel")
+        case .silver: L("Silver")
+        case .fog: L("Fog")
+        case .blue: L("Blue")
+        case .indigo: L("Indigo")
+        case .lavender: L("Lavender")
+        case .ocean: L("Ocean")
+        case .teal: L("Teal")
+        case .mint: L("Mint")
+        case .green: L("Green")
+        case .sage: L("Sage")
+        case .gold: L("Gold")
+        case .cocoa: L("Cocoa")
+        case .rose: L("Rose")
+        case .mauve: L("Mauve")
+        case .plum: L("Plum")
+        case .violet: L("Violet")
+        case .apricot: L("Apricot")
+        case .custom: L("Custom")
         }
     }
 

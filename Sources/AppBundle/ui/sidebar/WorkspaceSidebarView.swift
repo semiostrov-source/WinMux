@@ -747,7 +747,7 @@ extension WorkspaceSidebarView {
                     .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
-            .help("Clear search")
+            .help(L("Clear search"))
         }
         .padding(.horizontal, 8)
         .frame(width: workspaceSidebarSectionWidth(expansionProgress, layout: snapshot.configuration), height: workspaceSidebarSearchHeight)
@@ -1064,7 +1064,7 @@ extension WorkspaceSidebarView {
     }
 
     private func projectName(_ projectId: WorkspaceProjectId) -> String {
-        snapshot.projects.first { $0.id == projectId }?.displayName ?? "Project"
+        snapshot.projects.first { $0.id == projectId }?.displayName ?? L("Project")
     }
 
     private func projectColor(_ projectId: WorkspaceProjectId) -> Color {

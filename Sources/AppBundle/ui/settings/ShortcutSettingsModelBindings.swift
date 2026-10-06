@@ -35,7 +35,7 @@ extension ShortcutSettingsModel {
 
     func applyBindingNotation(_ notation: String, to actionId: String) {
         if let conflict = customCommandConflict(for: notation, excluding: actionId) {
-            errorMessage = "'\(notation)' is already used by custom binding: \(conflict)"
+            errorMessage = LF("'%@' is already used by custom binding: %@", notation, conflict)
             reload()
             return
         }

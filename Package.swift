@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "WinMuxPackage",
+    defaultLocalization: "en",
     // Runtime support for parameterized protocol types is only available in macOS 13.0.0 or newer
     // And it specifies deploymentTarget for CLI
     platforms: [.macOS(.v13)],
@@ -55,6 +56,7 @@ let package = Package(
                 .target(name: "Common"),
                 .target(name: "PrivateApi"),
             ],
+            resources: [.process("Resources")],
             swiftSettings: [
                 .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
             ],
@@ -63,7 +65,6 @@ let package = Package(
             name: "WinMuxApp",
             dependencies: [
                 .target(name: "AppBundle"),
-                .target(name: "SparkleSupport"),
             ],
         ),
         .target(

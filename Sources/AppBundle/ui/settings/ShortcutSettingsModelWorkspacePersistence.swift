@@ -4,7 +4,7 @@ import Foundation
 extension ShortcutSettingsModel {
     func setWorkspaceOverrideNotation(_ notation: String?, workspaceName: String, kind: WorkspaceShortcutKind) {
         if let conflict = notation.flatMap({ customWorkspaceConflict(for: $0, workspaceName: workspaceName, kind: kind) }) {
-            errorMessage = "'\((notation ?? ""))' is already used by custom binding: \(conflict)"
+            errorMessage = LF("'%@' is already used by custom binding: %@", notation ?? "", conflict)
             reload()
             return
         }
@@ -40,7 +40,7 @@ extension ShortcutSettingsModel {
         var renderedAssignments: [String: String] = [:]
         for pair in generatedPairs {
             if let existingCommand = renderedAssignments[pair.notation], existingCommand != pair.command {
-                throw shortcutSettingsError("'\(pair.notation)' is assigned to both '\(existingCommand)' and '\(pair.command)'")
+                throw shortcutSettingsError(LF("'%@' is assigned to both '%@' and '%@'", pair.notation, existingCommand, pair.command))
             }
             renderedAssignments[pair.notation] = pair.command
         }
@@ -53,7 +53,7 @@ extension ShortcutSettingsModel {
                 }
                 let notation = binding.descriptionWithKeyNotation
                 if let candidateCommand = renderedAssignments[notation], candidateCommand != command {
-                    throw shortcutSettingsError("'\(notation)' is already used by custom binding: \(command)")
+                    throw shortcutSettingsError(LF("'%@' is already used by custom binding: %@", notation, command))
                 }
             }
         }

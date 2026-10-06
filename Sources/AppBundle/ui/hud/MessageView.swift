@@ -77,7 +77,7 @@ struct MessageView: View {
                             openConfigButton(showShortcutGroup: true)
                     }
                 }
-                let closeButton = Button("Close") { model.message = nil }.keyboardShortcut(.defaultAction)
+                let closeButton = Button(L("Close")) { model.message = nil }.keyboardShortcut(.defaultAction)
                 shortcutGroup(label: Image(systemName: "return.left"), content: closeButton)
             }
             .padding()

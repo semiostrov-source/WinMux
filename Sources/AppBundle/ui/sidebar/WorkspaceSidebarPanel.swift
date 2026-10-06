@@ -58,14 +58,14 @@ struct WorkspaceSidebarProjectColorPreset: Hashable, Identifiable {
 }
 
 let workspaceSidebarProjectColorPresets: [WorkspaceSidebarProjectColorPreset] = [
-    WorkspaceSidebarProjectColorPreset(name: "Blue", hex: "#7BA3C9"),
-    WorkspaceSidebarProjectColorPreset(name: "Cyan", hex: "#6FBAB4"),
-    WorkspaceSidebarProjectColorPreset(name: "Green", hex: "#7DBF8E"),
+    WorkspaceSidebarProjectColorPreset(name: L("Blue"), hex: "#7BA3C9"),
+    WorkspaceSidebarProjectColorPreset(name: L("Cyan"), hex: "#6FBAB4"),
+    WorkspaceSidebarProjectColorPreset(name: L("Green"), hex: "#7DBF8E"),
     WorkspaceSidebarProjectColorPreset(name: "Yellow", hex: "#C9B97A"),
-    WorkspaceSidebarProjectColorPreset(name: "Orange", hex: "#C4956E"),
-    WorkspaceSidebarProjectColorPreset(name: "Red", hex: "#C48181"),
-    WorkspaceSidebarProjectColorPreset(name: "Pink", hex: "#BF8AAE"),
-    WorkspaceSidebarProjectColorPreset(name: "Violet", hex: "#9B8FC4"),
+    WorkspaceSidebarProjectColorPreset(name: L("Orange"), hex: "#C4956E"),
+    WorkspaceSidebarProjectColorPreset(name: L("Red"), hex: "#C48181"),
+    WorkspaceSidebarProjectColorPreset(name: L("Pink"), hex: "#BF8AAE"),
+    WorkspaceSidebarProjectColorPreset(name: L("Violet"), hex: "#9B8FC4"),
 ]
 extension WorkspaceSidebarPanel {
     func animateVisibleSidebarWidth(_ width: CGFloat, animation: Animation) {

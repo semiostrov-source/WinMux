@@ -31,7 +31,7 @@ extension ShortcutSettingsModel {
     func workspacePatternDisplay(for kind: WorkspaceShortcutKind) -> String {
         let previewWorkspace = workspaceNumbers.first ?? "1"
         return workspaceEffectiveNotation(for: previewWorkspace, kind: kind)
-            .map(displayBindingNotation) ?? "None"
+            .map(displayBindingNotation) ?? L("None")
     }
 
     func workspaceOverrideShortcutValue(workspaceName: String, kind: WorkspaceShortcutKind) -> MASShortcut? {

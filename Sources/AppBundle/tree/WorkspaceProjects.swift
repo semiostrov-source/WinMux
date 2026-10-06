@@ -19,10 +19,10 @@ func workspaceProjects() -> [WorkspaceProject] {
         {
             displayName = configuredName
         } else if project.id == workspaceProjectDefaultId {
-            displayName = "Default"
+            displayName = L("Default")
         } else {
             numberedProjectIndex += 1
-            displayName = "Project \(numberedProjectIndex)"
+            displayName = LF("Project %d", numberedProjectIndex)
         }
         return WorkspaceProject(
             id: project.id,
@@ -36,7 +36,7 @@ func workspaceProjects() -> [WorkspaceProject] {
 
 @MainActor
 func workspaceProjectName(_ projectId: WorkspaceProjectId) -> String {
-    workspaceProjects().first { $0.id == projectId }?.name ?? "Project"
+    workspaceProjects().first { $0.id == projectId }?.name ?? L("Project")
 }
 
 @MainActor

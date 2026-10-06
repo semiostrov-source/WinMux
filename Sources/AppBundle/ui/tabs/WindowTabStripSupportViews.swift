@@ -42,7 +42,7 @@ struct WindowTabGroupHandleView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .contentShape(Rectangle())
-        .accessibilityLabel("Focus Tab Group")
+        .accessibilityLabel(L("Focus Tab Group"))
         .frame(width: windowTabStripReservedGroupHandleWidth())
         .contentShape(Rectangle())
         .onTapGesture {

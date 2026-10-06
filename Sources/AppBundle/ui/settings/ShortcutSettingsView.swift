@@ -7,7 +7,7 @@ public let shortcutSettingsWindowId = "\(winMuxAppName).shortcutSettings"
 
 @MainActor
 public func getShortcutSettingsWindow(model: ShortcutSettingsModel) -> some Scene {
-    SwiftUI.Window("WinMux Settings", id: shortcutSettingsWindowId) {
+    SwiftUI.Window(L("WinMux Settings"), id: shortcutSettingsWindowId) {
         ShortcutSettingsView(model: model)
             .frame(width: 760, height: 620)
             .onAppear {
@@ -43,12 +43,12 @@ enum SettingsSidebarItem: Hashable, Identifiable {
 
     var label: String {
         switch self {
-            case .shortcuts: "Shortcuts"
-            case .workspaces: "Workspaces"
-            case .behavior: "Behavior"
-            case .appearance: "Appearance"
-            case .configuration: "Configuration"
-            case .reference: "Configuration Reference"
+            case .shortcuts: L("Shortcuts")
+            case .workspaces: L("Workspaces")
+            case .behavior: L("Behavior")
+            case .appearance: L("Appearance")
+            case .configuration: L("Configuration")
+            case .reference: L("Configuration Reference")
         }
     }
 
@@ -95,7 +95,7 @@ struct ShortcutSettingsView: View {
                     case .reference:
                         ShortcutConfigurationReferenceView()
                     case nil:
-                        Text("Select an item")
+                        Text(L("Select an item"))
                 }
             }
             .navigationTitle(selectedItem?.label ?? "")
@@ -168,7 +168,7 @@ struct ShortcutSectionView: View {
             } else if section.id == "managed-move" {
                 EmptyView()
             } else if section.id == "managed-splits" {
-                CompassPad(model: model, title: "Split", prefix: "split") {
+                CompassPad(model: model, title: L("Split"), prefix: "split") {
                     SplitDemoView()
                 }
             } else if section.id == "workspaces" {

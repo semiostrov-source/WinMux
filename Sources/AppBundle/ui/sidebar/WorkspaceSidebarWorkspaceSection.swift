@@ -53,9 +53,9 @@ struct WorkspaceSidebarWorkspaceSection: View {
     var isRenamingWorkspace: Bool { renamingWorkspaceName == workspace.name }
     var inUseOverrideText: String {
         if let monitorName = workspace.monitorName, !monitorName.isEmpty {
-            return "In use on \(monitorName)"
+            return LF("In use on %@", monitorName)
         }
-        return "In use on another display"
+        return L("In use on another display")
     }
     var sectionShape: RoundedRectangle {
         RoundedRectangle(cornerRadius: workspaceSidebarSectionCornerRadius, style: .continuous)
@@ -76,13 +76,13 @@ struct WorkspaceSidebarWorkspaceSection: View {
                     debugWorkspaceSidebarRenameLog("workspaceContextRename workspace=\(workspace.name) displayName=\(workspace.displayName) compact=\(isCompact)")
                     onBeginRenameWorkspace()
                 } label: {
-                    Text("Rename Workspace")
+                    Text(L("Rename Workspace"))
                 }
                 Divider()
                 Button(role: .destructive) {
                     actions.send(.deleteWorkspace(workspace.name))
                 } label: {
-                    Text("Delete Workspace")
+                    Text(L("Delete Workspace"))
                 }
             }
             .onHover { hover in
@@ -309,7 +309,7 @@ extension WorkspaceSidebarWorkspaceSection {
     }
 
     var generatedWorkspaceBadgeText: String {
-        let prefix = "Workspace "
+        let prefix = L("Workspace") + " "
         if workspace.displayName.hasPrefix(prefix) {
             let suffix = String(workspace.displayName.dropFirst(prefix.count))
             if !suffix.isEmpty { return suffix }
@@ -501,7 +501,7 @@ extension WorkspaceSidebarWorkspaceSection {
             actions.send(.selectWindow(group.representativeWindowId))
         } label: {
             WorkspaceSidebarWindowRow(
-                title: group.title.isEmpty ? "Tab Group" : group.title,
+                title: group.title.isEmpty ? L("Tab Group") : group.title,
                 badge: group.windowCount > 1 ? "\(group.windowCount)" : nil,
                 isFocused: group.isFocused,
                 suppressFocusedStyle: isSearchFiltering,

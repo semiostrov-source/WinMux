@@ -25,7 +25,7 @@ private func makeWindowTabChromeTab(
     window: Window,
     activeWindowId: UInt32,
 ) async -> WindowTabChromeTabItem {
-    let appName = window.app.name ?? window.app.rawAppBundleId ?? "Window"
+    let appName = window.app.name ?? window.app.rawAppBundleId ?? L("Window")
     let title = await getSessionWindowTitle(window) ?? appName
     return WindowTabChromeTabItem(
         id: window.windowId,

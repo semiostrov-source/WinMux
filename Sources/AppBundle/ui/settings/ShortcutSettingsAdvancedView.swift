@@ -15,7 +15,7 @@ struct ShortcutAdvancedView: View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("Config Editor")
+                    Text(L("Config Editor"))
                         .font(.headline)
                     if let targetUrl {
                         Text(targetUrl.path)
@@ -27,15 +27,15 @@ struct ShortcutAdvancedView: View {
 
                 Spacer()
 
-                Button("Reload From Disk") {
+                Button(L("Reload From Disk")) {
                     loadFromDisk()
                 }
                 .controlSize(.small)
-                Button("Validate") {
+                Button(L("Validate")) {
                     validateConfig()
                 }
                 .controlSize(.small)
-                Button("Save") {
+                Button(L("Save")) {
                     saveConfig()
                 }
                 .controlSize(.small)
@@ -85,7 +85,7 @@ struct ShortcutAdvancedView: View {
         let parsed = parseConfig(configText)
         if parsed.errors.isEmpty {
             validationMessage = nil
-            saveMessage = "Config is valid."
+            saveMessage = L("Config is valid.")
         } else {
             validationMessage = parsed.errors.map(\.description).joined(separator: "\n\n")
         }
@@ -112,11 +112,11 @@ struct ShortcutAdvancedView: View {
                 try configText.write(to: resolvedUrl, atomically: true, encoding: .utf8)
                 let isOk = try await reloadConfig(forceConfigUrl: resolvedUrl)
                 if isOk {
-                    saveMessage = "Saved and reloaded."
+                    saveMessage = L("Saved and reloaded.")
                     model.reload()
                 } else {
                     saveMessage = nil
-                    validationMessage = "Saved, but reload failed. Check the parser error message window."
+                    validationMessage = L("Saved, but reload failed. Check the parser error message window.")
                 }
             } catch {
                 validationMessage = error.localizedDescription
@@ -142,7 +142,7 @@ struct OpenShortcutSettingsButton: View {
     @Environment(\.openWindow) private var openWindow: OpenWindowAction
 
     var body: some View {
-        Button("Settings…") {
+        Button(L("Settings…")) {
             openShortcutSettingsWindow(openWindow)
         }
     }

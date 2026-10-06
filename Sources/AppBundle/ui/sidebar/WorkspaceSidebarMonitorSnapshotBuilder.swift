@@ -22,7 +22,7 @@ func buildWorkspaceSidebarMonitorScopes(
     var scopes = [
         WorkspaceSidebarMonitorScopeViewModel(
             id: workspaceSidebarDefaultScopeId,
-            displayName: "Default",
+            displayName: L("Default"),
             subtitle: nil,
             systemImageName: "display",
             isFocusedMonitor: false,
@@ -31,7 +31,7 @@ func buildWorkspaceSidebarMonitorScopes(
     if config.workspaceSidebar.enableFocus {
         scopes.append(WorkspaceSidebarMonitorScopeViewModel(
             id: workspaceSidebarFocusedScopeId,
-            displayName: "Focused",
+            displayName: L("Focused"),
             subtitle: nil,
             systemImageName: "scope",
             isFocusedMonitor: false,
@@ -52,7 +52,7 @@ func buildWorkspaceSidebarMonitorScopes(
 func workspaceSidebarMonitorDisplayName(_ monitor: Monitor, fallbackIndex: Int) -> String {
     let name = monitor.name.trimmingCharacters(in: .whitespacesAndNewlines)
     if monitor.isMain {
-        return "Main"
+        return L("Main")
     }
-    return name.isEmpty ? "Display \(fallbackIndex)" : name
+    return name.isEmpty ? LF("Display %d", fallbackIndex) : name
 }

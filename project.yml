@@ -22,9 +22,9 @@ targets:
         CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         LSUIElement: true
-        SUEnableAutomaticChecks: true
-        SUFeedURL: https://github.com/ZimengXiong/winmux/releases/latest/download/appcast.xml
-        SUPublicEDKey: $(SPARKLE_PUBLIC_KEY)
+        CFBundleDevelopmentRegion: en
+        CFBundleLocalizations: [en, ru]
+        SUEnableAutomaticChecks: false
     sources:
       - "Sources/WinMuxApp"
       - path: "resources"
@@ -34,8 +34,6 @@ targets:
     dependencies:
       - package: WinMuxPackage
         product: AppBundle
-      - package: WinMuxPackage
-        product: SparkleSupport
     # https://developer.apple.com/documentation/xcode/build-settings-reference
     settings:
       base:

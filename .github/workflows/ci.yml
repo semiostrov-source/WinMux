@@ -14,6 +14,7 @@ concurrency:
 
 jobs:
   test:
+    if: github.event_name == 'pull_request' || github.repository == 'ZimengXiong/WinMux'
     name: Build and test
     runs-on: macos-26
     timeout-minutes: 30
@@ -34,4 +35,6 @@ jobs:
           xcodebuild -version
 
       - name: Build and test
-        run: make check
+        run: |
+          python3 script/validate_localization.py
+          make check
